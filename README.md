@@ -1,0 +1,1 @@
+# mirdan-teknisi-parabola-kc
