@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mirdan Teknisi Parabola</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: { primary: "#0a2463", secondary: "#0066ff" },
+            borderRadius: {
+              none: "0px",
+              sm: "4px",
+              DEFAULT: "8px",
+              md: "12px",
+              lg: "16px",
+              xl: "20px",
+              "2xl": "24px",
+              "3xl": "32px",
+              full: "9999px",
+              button: "8px",
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <style>
+      :where([class^="ri-"])::before {
+        content: "\f3c2";
+      }
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: #e0f2fe;
+        scroll-behavior: smooth;
+      }
+      .hero-section {
+        background-image: url("https://public.readdy.ai/ai/img_res/466c49028333c843d6a06d900c1e17d0.jpg");
+        background-size: cover;
+        background-position: center;
+      }
+      .nav-link {
+        position: relative;
+      }
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -2px;
+        left: 0;
+        background-color: #0066ff;
+        transition: width 0.3s;
+      }
+      .nav-link.active::after,
+      .nav-link:hover::after {
+        width: 100%;
+      }
+      .custom-shadow {
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      }
+      input[type="number"]::-webkit-inner-spin-button,
+      input[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+      .timeline-item::before {
+        content: "";
+        position: absolute;
+        left: -37px;
+        top: 0;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background-color: #0066ff;
+        border: 3px solid #e6f2ff;
+      }
+      .timeline-item {
+        position: relative;
+      }
+      .timeline::before {
+        content: "";
+        position: absolute;
+        left: 10px;
+        top: 0;
+        height: 100%;
+        width: 2px;
+        background-color: #0066ff;
+      }
+      @media (max-width: 768px) {
+        .hero-section {
+          background-position: right center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="bg-white shadow-md fixed w-full top-0 z-50">
+      <div
+        class="container mx-auto px-4 py-3 flex justify-between items-center"
+      >
+        <a href="#beranda" class="text-primary font-['Pacifico'] text-2xl"
+          >Mirdan Teknisi</a
+        >
+        <nav class="hidden md:flex space-x-8">
+          <a
+            href="#beranda"
+            class="nav-link active text-primary hover:text-secondary transition-colors"
+            >Beranda</a
+          >
+          <a
+            href="#profile"
+            class="nav-link text-primary hover:text-secondary transition-colors"
+            >Profile</a
+          >
+          <a
+            href="#pengalaman"
+            class="nav-link text-primary hover:text-secondary transition-colors"
+            >Pengalaman</a
+          >
+          <a
+            href="#layanan"
+            class="nav-link text-primary hover:text-secondary transition-colors"
+            >Layanan</a
+          >
+          <a
+            href="#kontak"
+            class="nav-link text-primary hover:text-secondary transition-colors"
+            >Kontak</a
+          >
+        </nav>
+        <button
+          class="md:hidden w-10 h-10 flex items-center justify-center text-primary"
+          id="menu-toggle"
+        >
+          <i class="ri-menu-line ri-lg"></i>
+        </button>
+      </div>
+      <div
+        class="mobile-menu hidden bg-white w-full absolute top-full left-0 shadow-md md:hidden"
+        id="mobile-menu"
+      >
+        <div class="container mx-auto px-4 py-3 flex flex-col space-y-4">
+          <a
+            href="#beranda"
+            class="text-primary hover:text-secondary transition-colors py-2 border-b border-gray-100"
+            >Beranda</a
+          >
+          <a
+            href="#profile"
+            class="text-primary hover:text-secondary transition-colors py-2 border-b border-gray-100"
+            >Profile</a
+          >
+          <a
+            href="#pengalaman"
+            class="text-primary hover:text-secondary transition-colors py-2 border-b border-gray-100"
+            >Pengalaman</a
+          >
+          <a
+            href="#layanan"
+            class="text-primary hover:text-secondary transition-colors py-2 border-b border-gray-100"
+            >Layanan</a
+          >
+          <a
+            href="#kontak"
+            class="text-primary hover:text-secondary transition-colors py-2"
+            >Kontak</a
+          >
+        </div>
+      </div>
+    </header>
+    <main class="pt-16">
+      <!-- Beranda Section -->
+      <section
+        id="beranda"
+        class="hero-section min-h-[600px] flex items-center"
+      >
+        <div class="container mx-auto px-4 py-16 w-full">
+          <div class="max-w-lg bg-white/90 p-8 rounded-lg backdrop-blur-sm">
+            <h1 class="text-4xl md:text-5xl font-bold text-primary mb-4">
+              Mirdan Teknisi Parabola
+            </h1>
+            <p class="text-lg text-gray-700 mb-6">
+              Solusi terpercaya untuk instalasi dan perbaikan parabola C-band
+              dan Ku-band dengan pengalaman bertahun-tahun.
+            </p>
+            <a
+              href="#kontak"
+              class="bg-primary text-white px-6 py-3 !rounded-button inline-flex items-center gap-2 hover:bg-opacity-90 transition-all whitespace-nowrap"
+            >
+              <i class="ri-phone-line"></i>
+              Hubungi Sekarang
+            </a>
+          </div>
+        </div>
+      </section>
+      <!-- Profile Section -->
+      <section id="profile" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+          <h2 class="text-3xl font-bold text-primary text-center mb-12">
+            Profile
+          </h2>
+          <div class="flex flex-col md:flex-row gap-8 items-center">
+            <div class="md:w-1/3">
+              <div class="rounded-lg overflow-hidden shadow-lg">
+                <img
+                  src="pr.jpg"
+                  alt="Mirdan Teknisi"
+                  class="w-full h-auto object-cover"
+                />
+              </div>
+            </div>
+            <div class="md:w-2/3">
+              <h3 class="text-2xl font-semibold text-primary mb-4">
+                Tentang Saya
+              </h3>
+              <p class="text-gray-700 mb-6">
+                Saya adalah teknisi parabola dengan pengalaman lebih dari 3
+                tahun dalam instalasi dan perbaikan parabola C-band dan Ku-band.
+                Saya berkomitmen untuk memberikan layanan berkualitas tinggi
+                dengan harga yang terjangkau untuk semua pelanggan.
+              </p>
+              <h3 class="text-2xl font-semibold text-primary mb-4">
+                Pendidikan
+              </h3>
+              <div class="space-y-4 mb-6">
+                <div class="flex items-start gap-4">
+                  <div
+                    class="w-10 h-10 flex items-center justify-center bg-secondary text-white rounded-full shrink-0"
+                  >
+                    <i class="ri-building-line"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-medium text-gray-900">
+                      Universitas Muhammadiyah Bima
+                    </h4>
+                    <p class="text-gray-600">Ilmu Komputer</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-4">
+                  <div
+                    class="w-10 h-10 flex items-center justify-center bg-secondary text-white rounded-full shrink-0"
+                  >
+                    <i class="ri-school-line"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-medium text-gray-900">
+                      SMA Negeri 1 Ambalawi
+                    </h4>
+                    <p class="text-gray-600">2019 - 2022</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-4">
+                  <div
+                    class="w-10 h-10 flex items-center justify-center bg-secondary text-white rounded-full shrink-0"
+                  >
+                    <i class="ri-school-line"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-medium text-gray-900">SMPN 2 Ambalawi</h4>
+                    <p class="text-gray-600">2016 - 2019</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-4">
+                  <div
+                    class="w-10 h-10 flex items-center justify-center bg-secondary text-white rounded-full shrink-0"
+                  >
+                    <i class="ri-school-line"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-medium text-gray-900">SDN Nggaro Nangga</h4>
+                    <p class="text-gray-600">2013 - 2016</p>
+                  </div>
+                </div>
+              </div>
+              <h3 class="text-2xl font-semibold text-primary mb-4">Hobi</h3>
+              <div class="flex flex-wrap gap-4">
+                <div
+                  class="bg-blue-50 px-4 py-2 rounded-full flex items-center gap-2"
+                >
+                  <i class="ri-sun-line text-secondary"></i>
+                  <span>Nge-Sunset</span>
+                </div>
+                <div
+                  class="bg-blue-50 px-4 py-2 rounded-full flex items-center gap-2"
+                >
+                  <i class="ri-book-open-line text-secondary"></i>
+                  <span>Membaca</span>
+                </div>
+                <div
+                  class="bg-blue-50 px-4 py-2 rounded-full flex items-center gap-2"
+                >
+                  <i class="ri-guitar-line text-secondary"></i>
+                  <span>Bermain Gitar</span>
+                </div>
+                <div
+                  class="bg-blue-50 px-4 py-2 rounded-full flex items-center gap-2"
+                >
+                  <i class="ri-computer-line text-secondary"></i>
+                  <span>Teknologi</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Pengalaman Section -->
+      <section id="pengalaman" class="py-16 bg-sky-100">
+        <div class="container mx-auto px-4">
+          <h2 class="text-3xl font-bold text-primary text-center mb-12">
+            Pengalaman
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="bg-white rounded-lg p-6 shadow-md">
+              <h3 class="text-2xl font-semibold text-primary mb-6">
+                Pengalaman Teknis
+              </h3>
+              <div class="relative timeline pl-12">
+                <div class="timeline-item pb-8">
+                  <h4 class="font-semibold text-gray-900 mb-2">
+                    Perbaikan Parabola C-band
+                  </h4>
+                  <p class="text-gray-700">
+                    Memiliki pengalaman lebih dari 5 tahun dalam instalasi,
+                    perbaikan, dan perawatan parabola C-band. Menangani berbagai
+                    masalah seperti penyelarasan dish, penggantian LNB, dan
+                    troubleshooting sinyal.
+                  </p>
+                </div>
+                <div class="timeline-item">
+                  <h4 class="font-semibold text-gray-900 mb-2">
+                    Perbaikan Parabola Ku-band
+                  </h4>
+                  <p class="text-gray-700">
+                    Ahli dalam instalasi dan perbaikan parabola Ku-band untuk
+                    layanan TV berbayar. Berpengalaman dalam penyelarasan dish
+                    untuk mendapatkan sinyal optimal dan mengatasi masalah
+                    interferensi.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="bg-white rounded-lg p-6 shadow-md">
+              <h3 class="text-2xl font-semibold text-primary mb-6">
+                Pengalaman Organisasi
+              </h3>
+              <div class="relative timeline pl-12">
+                <div class="timeline-item pb-8">
+                  <h4 class="font-semibold text-gray-900 mb-2">
+                    Kabid Keagamaan Ikatan Mahasiswa Ambalawi(IMAWI) Periode
+                    2024-2025
+                  </h4>
+                  <p class="text-gray-700">
+                    Bertanggung jawab untuk mengorganisir kegiatan keagamaan dan
+                    memastikan pelaksanaan program kerja bidang keagamaan
+                    berjalan dengan baik.
+                  </p>
+                </div>
+                <div class="timeline-item pb-8">
+                  <h4 class="font-semibold text-gray-900 mb-2">
+                    Anggota PCM Muhammadiyah Kec. Ambalawi
+                  </h4>
+                  <p class="text-gray-700">
+                    Aktif dalam kegiatan sosial dan keagamaan di tingkat
+                    kecamatan, berpartisipasi dalam program pemberdayaan
+                    masyarakat.
+                  </p>
+                </div>
+                <div class="timeline-item">
+                  <h4 class="font-semibold text-gray-900 mb-2">
+                    Anggota SMI Cabang Bima
+                  </h4>
+                  <p class="text-gray-700">
+                    Terlibat dalam berbagai kegiatan kepemudaan dan pengembangan
+                    masyarakat di wilayah Bima.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Layanan Section -->
+      <section id="layanan" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+          <h2 class="text-3xl font-bold text-primary text-center mb-12">
+            Layanan
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div
+              class="bg-white rounded-lg p-6 shadow-md border border-gray-100 hover:shadow-lg transition-shadow"
+            >
+              <div
+                class="w-16 h-16 flex items-center justify-center bg-blue-100 text-secondary rounded-full mb-6 mx-auto"
+              >
+                <i class="ri-satellite-dish-line ri-2x"></i>
+              </div>
+              <h3 class="text-xl font-semibold text-primary text-center mb-4">
+                Instalasi Parabola
+              </h3>
+              <p class="text-gray-700 text-center mb-6">
+                Layanan pemasangan parabola baru dengan posisi optimal untuk
+                mendapatkan sinyal terbaik. Termasuk pemasangan dish, LNB, dan
+                receiver.
+              </p>
+              <div class="text-center">
+                <a
+                  href="#kontak"
+                  class="bg-secondary text-white px-5 py-2 !rounded-button inline-flex items-center justify-center gap-2 hover:bg-opacity-90 transition-all whitespace-nowrap"
+                >
+                  <i class="ri-phone-line"></i>
+                  Hubungi
+                </a>
+              </div>
+            </div>
+            <div
+              class="bg-white rounded-lg p-6 shadow-md border border-gray-100 hover:shadow-lg transition-shadow"
+            >
+              <div
+                class="w-16 h-16 flex items-center justify-center bg-blue-100 text-secondary rounded-full mb-6 mx-auto"
+              >
+                <i class="ri-tools-line ri-2x"></i>
+              </div>
+              <h3 class="text-xl font-semibold text-primary text-center mb-4">
+                Perbaikan & Troubleshooting
+              </h3>
+              <p class="text-gray-700 text-center mb-6">
+                Mendiagnosa dan memperbaiki masalah pada sistem parabola yang
+                sudah terpasang. Mengatasi masalah sinyal lemah, gangguan
+                gambar, dan kerusakan komponen.
+              </p>
+              <div class="text-center">
+                <a
+                  href="#kontak"
+                  class="bg-secondary text-white px-5 py-2 !rounded-button inline-flex items-center justify-center gap-2 hover:bg-opacity-90 transition-all whitespace-nowrap"
+                >
+                  <i class="ri-phone-line"></i>
+                  Hubungi
+                </a>
+              </div>
+            </div>
+            <div
+              class="bg-white rounded-lg p-6 shadow-md border border-gray-100 hover:shadow-lg transition-shadow"
+            >
+              <div
+                class="w-16 h-16 flex items-center justify-center bg-blue-100 text-secondary rounded-full mb-6 mx-auto"
+              >
+                <i class="ri-settings-line ri-2x"></i>
+              </div>
+              <h3 class="text-xl font-semibold text-primary text-center mb-4">
+                Perawatan Berkala
+              </h3>
+              <p class="text-gray-700 text-center mb-6">
+                Layanan perawatan rutin untuk memastikan sistem parabola bekerja
+                optimal. Termasuk pembersihan dish, pengecekan kabel, dan
+                penyelarasan ulang jika diperlukan.
+              </p>
+              <div class="text-center">
+                <a
+                  href="#kontak"
+                  class="bg-secondary text-white px-5 py-2 !rounded-button inline-flex items-center justify-center gap-2 hover:bg-opacity-90 transition-all whitespace-nowrap"
+                >
+                  <i class="ri-phone-line"></i>
+                  Hubungi
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div
+              class="bg-white rounded-lg p-6 shadow-md border border-gray-100 hover:shadow-lg transition-shadow"
+            >
+              <div
+                class="w-16 h-16 flex items-center justify-center bg-blue-100 text-secondary rounded-full mb-6 mx-auto"
+              >
+                <i class="ri-tv-line ri-2x"></i>
+              </div>
+              <h3 class="text-xl font-semibold text-primary text-center mb-4">
+                Setting Receiver & Channel
+              </h3>
+              <p class="text-gray-700 text-center mb-6">
+                Layanan pengaturan receiver dan scanning channel untuk
+                mendapatkan daftar channel terlengkap. Update software receiver
+                untuk fitur terbaru.
+              </p>
+              <div class="text-center">
+                <a
+                  href="#kontak"
+                  class="bg-secondary text-white px-5 py-2 !rounded-button inline-flex items-center justify-center gap-2 hover:bg-opacity-90 transition-all whitespace-nowrap"
+                >
+                  <i class="ri-phone-line"></i>
+                  Hubungi
+                </a>
+              </div>
+            </div>
+            <div
+              class="bg-white rounded-lg p-6 shadow-md border border-gray-100 hover:shadow-lg transition-shadow"
+            >
+              <div
+                class="w-16 h-16 flex items-center justify-center bg-blue-100 text-secondary rounded-full mb-6 mx-auto"
+              >
+                <i class="ri-customer-service-line ri-2x"></i>
+              </div>
+              <h3 class="text-xl font-semibold text-primary text-center mb-4">
+                Konsultasi & Saran
+              </h3>
+              <p class="text-gray-700 text-center mb-6">
+                Layanan konsultasi untuk memilih jenis parabola yang sesuai
+                dengan kebutuhan dan lokasi. Saran tentang posisi optimal dan
+                peralatan yang diperlukan.
+              </p>
+              <div class="text-center">
+                <a
+                  href="#kontak"
+                  class="bg-secondary text-white px-5 py-2 !rounded-button inline-flex items-center justify-center gap-2 hover:bg-opacity-90 transition-all whitespace-nowrap"
+                >
+                  <i class="ri-phone-line"></i>
+                  Hubungi
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Kontak Section -->
+      <section id="kontak" class="py-16 bg-sky-100">
+        <div class="container mx-auto px-4">
+          <h2 class="text-3xl font-bold text-primary text-center mb-12">
+            Kontak
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="bg-white rounded-lg p-6 shadow-md">
+              <h3 class="text-2xl font-semibold text-primary mb-6">
+                Hubungi Saya
+              </h3>
+              <form id="contactForm" class="space-y-6">
+                <div>
+                  <label for="name" class="block text-gray-700 mb-2"
+                    >Nama</label
+                  >
+                  <input
+                    type="text"
+                    id="name"
+                    class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent"
+                    placeholder="Nama Lengkap"
+                    required
+                  />
+                </div>
+                <div>
+                  <label for="email" class="block text-gray-700 mb-2"
+                    >Email</label
+                  >
+                  <input
+                    type="email"
+                    id="email"
+                    class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent"
+                    placeholder="email@example.com"
+                    required
+                  />
+                </div>
+                <div>
+                  <label for="address" class="block text-gray-700 mb-2"
+                    >Alamat</label
+                  >
+                  <input
+                    type="text"
+                    id="address"
+                    class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent"
+                    placeholder="Masukkan alamat lengkap Anda"
+                    required
+                  />
+                </div>
+                <div>
+                  <label for="service" class="block text-gray-700 mb-2"
+                    >Pilih Layanan</label
+                  >
+                  <select
+                    id="service"
+                    class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent pr-8"
+                    required
+                  >
+                    <option value="">Pilih Layanan</option>
+                    <option value="Instalasi Parabola">
+                      Instalasi Parabola
+                    </option>
+                    <option value="Perbaikan & Troubleshooting">
+                      Perbaikan & Troubleshooting
+                    </option>
+                    <option value="Perawatan Berkala">Perawatan Berkala</option>
+                    <option value="Setting Receiver & Channel">
+                      Setting Receiver & Channel
+                    </option>
+                    <option value="Konsultasi & Saran">
+                      Konsultasi & Saran
+                    </option>
+                  </select>
+                </div>
+                <div>
+                  <label for="message" class="block text-gray-700 mb-2"
+                    >Pesan</label
+                  >
+                  <textarea
+                    id="message"
+                    rows="4"
+                    class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent"
+                    placeholder="Tuliskan pesan Anda di sini..."
+                    required
+                  ></textarea>
+                </div>
+                <button
+                  type="submit"
+                  class="bg-primary text-white px-6 py-3 !rounded-button inline-flex items-center gap-2 hover:bg-opacity-90 transition-all whitespace-nowrap"
+                >
+                  <i class="ri-send-plane-line"></i>
+                  Kirim Pesan
+                </button>
+              </form>
+            </div>
+            <div class="bg-white rounded-lg p-6 shadow-md">
+              <h3 class="text-2xl font-semibold text-primary mb-6">
+                Informasi Kontak
+              </h3>
+              <div class="space-y-6">
+                <div class="flex items-start gap-4">
+                  <div
+                    class="w-12 h-12 flex items-center justify-center bg-blue-100 text-secondary rounded-full shrink-0"
+                  >
+                    <i class="ri-map-pin-line ri-lg"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-medium text-gray-900">Alamat</h4>
+                    <p class="text-gray-600">
+                      Nggaro Nangga, Talapiti, Ambalawi, Bima, NTB, Indonesia
+                    </p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-4">
+                  <div
+                    class="w-12 h-12 flex items-center justify-center bg-blue-100 text-secondary rounded-full shrink-0"
+                  >
+                    <i class="ri-mail-line ri-lg"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-medium text-gray-900">Email</h4>
+                    <p class="text-gray-600">mirdan693@gmail.com</p>
+                  </div>
+                </div>
+                <div>
+                  <h4 class="font-medium text-gray-900 mb-4">Media Sosial</h4>
+                  <div class="flex gap-4">
+                    <a
+                      href="https://www.facebook.com/randa.sipa.900"
+                      target="_blank"
+                      class="w-12 h-12 flex items-center justify-center bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors"
+                    >
+                      <i class="ri-facebook-fill ri-lg"></i>
+                    </a>
+                    <a
+                      href="https://www.instagram.com/mirdan1559?igsh=bGZtcm82d2ltdWFu"
+                      target="_blank"
+                      class="w-12 h-12 flex items-center justify-center bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full hover:from-purple-600 hover:to-pink-600 transition-colors"
+                    >
+                      <i class="ri-instagram-line ri-lg"></i>
+                    </a>
+                    <a
+                      href="https://www.tiktok.com/@dionmirdan2005?_t=ZS-8vNuSyd7nZU&_r=1"
+                      target="_blank"
+                      class="w-12 h-12 flex items-center justify-center bg-black text-white rounded-full hover:bg-gray-800 transition-colors"
+                    >
+                      <i class="ri-tiktok-line ri-lg"></i>
+                    </a>
+                    <a
+                      href="https://wa.me/6282359082093"
+                      target="_blank"
+                      class="w-12 h-12 flex items-center justify-center bg-green-500 text-white rounded-full hover:bg-green-600 transition-colors"
+                    >
+                      <i class="ri-whatsapp-line ri-lg"></i>
+                    </a>
+                  </div>
+                </div>
+                <div>
+                  <h4 class="font-medium text-gray-900 mb-4">Area Layanan</h4>
+                  <p class="text-gray-600 mb-4">
+                    Melayani wilayah Desa Kole, Desa Rite, Desa Tolowata Desa
+                    Talapiti, Desa Nipa, Desa Mawu, dan sekitarnya. Siap datang
+                    ke lokasi Anda untuk instalasi dan perbaikan.
+                  </p>
+                  <div class="h-64 rounded-lg overflow-hidden">
+                    <img
+                      src="111.png"
+                      alt="Area Layanan"
+                      class="w-full h-full object-cover"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="bg-primary text-white py-10">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+          <div>
+            <h3 class="text-xl font-['Pacifico'] mb-4">Mirdan Teknisi</h3>
+            <p class="text-blue-200 mb-4">
+              Ncera mpa Angi Ndai, Masalah gaji moda mpa ndi nuntu, ore sato'i
+              gaji tergantung do'o lokasi perbaikan.
+            </p>
+            <div class="flex gap-4">
+              <a
+                href="https://www.facebook.com/randa.sipa.900"
+                target="_blank"
+                class="w-10 h-10 flex items-center justify-center bg-white/10 rounded-full hover:bg-white/20 transition-colors"
+              >
+                <i class="ri-facebook-fill text-white"></i>
+              </a>
+              <a
+                href="https://www.instagram.com/mirdan1559?igsh=bGZtcm82d2ltdWFu"
+                target="_blank"
+                class="w-10 h-10 flex items-center justify-center bg-white/10 rounded-full hover:bg-white/20 transition-colors"
+              >
+                <i class="ri-instagram-line text-white"></i>
+              </a>
+              <a
+                href="https://www.tiktok.com/@dionmirdan2005?_t=ZS-8vNuSyd7nZU&_r=1"
+                target="_blank"
+                class="w-10 h-10 flex items-center justify-center bg-white/10 rounded-full hover:bg-white/20 transition-colors"
+              >
+                <i class="ri-tiktok-line text-white"></i>
+              </a>
+              <a
+                href="https://wa.me/6282359082093"
+                target="_blank"
+                class="w-10 h-10 flex items-center justify-center bg-white/10 rounded-full hover:bg-white/20 transition-colors"
+              >
+                <i class="ri-whatsapp-line text-white"></i>
+              </a>
+            </div>
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold mb-4">Link Cepat</h3>
+            <ul class="space-y-2">
+              <li>
+                <a
+                  href="#beranda"
+                  class="text-blue-200 hover:text-white transition-colors"
+                  >Beranda</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#profile"
+                  class="text-blue-200 hover:text-white transition-colors"
+                  >Profile</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#pengalaman"
+                  class="text-blue-200 hover:text-white transition-colors"
+                  >Pengalaman</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#layanan"
+                  class="text-blue-200 hover:text-white transition-colors"
+                  >Layanan</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#kontak"
+                  class="text-blue-200 hover:text-white transition-colors"
+                  >Kontak</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold mb-4">Kontak</h3>
+            <ul class="space-y-2">
+              <li class="flex items-center gap-2">
+                <i class="ri-phone-line"></i>
+                <span>+62 823-5908-2093</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <i class="ri-mail-line"></i>
+                <span>mirdan693@gmail.com</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <i class="ri-map-pin-line"></i>
+                <span>Nggaro Nangga, Talapiti, Ambalawi, Bima, NTB</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="border-t border-blue-800 pt-6 text-center">
+          <p class="text-blue-200">
+            &copy; 2025 Mirdan Teknisi Parabola. Hak Cipta Mirdan MT.
+          </p>
+        </div>
+      </div>
+    </footer>
+    <a
+      href="#beranda"
+      class="fixed bottom-6 right-6 w-12 h-12 bg-secondary text-white rounded-full flex items-center justify-center shadow-lg hover:bg-opacity-90 transition-all"
+      id="back-to-top"
+      style="display: none"
+    >
+      <i class="ri-arrow-up-line ri-lg"></i>
+    </a>
+    <script>
+      // Mobile menu toggle
+      const menuToggle = document.getElementById("menu-toggle");
+      const mobileMenu = document.getElementById("mobile-menu");
+      menuToggle.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+        if (menuToggle.querySelector("i").classList.contains("ri-menu-line")) {
+          menuToggle
+            .querySelector("i")
+            .classList.replace("ri-menu-line", "ri-close-line");
+        } else {
+          menuToggle
+            .querySelector("i")
+            .classList.replace("ri-close-line", "ri-menu-line");
+        }
+      });
+      // Close mobile menu when clicking on a link
+      const mobileLinks = mobileMenu.querySelectorAll("a");
+      mobileLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          mobileMenu.classList.add("hidden");
+          menuToggle
+            .querySelector("i")
+            .classList.replace("ri-close-line", "ri-menu-line");
+        });
+      });
+      // Back to top button
+      const backToTopButton = document.getElementById("back-to-top");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 300) {
+          backToTopButton.style.display = "flex";
+        } else {
+          backToTopButton.style.display = "none";
+        }
+      });
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const targetId = this.getAttribute("href");
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 80,
+              behavior: "smooth",
+            });
+          }
+        });
+      });
+      // Active nav link highlighting
+      const sections = document.querySelectorAll("section");
+      const navLinks = document.querySelectorAll(".nav-link");
+      window.addEventListener("scroll", () => {
+        let current = "";
+        sections.forEach((section) => {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.clientHeight;
+          if (scrollY >= sectionTop - 100) {
+            current = section.getAttribute("id");
+          }
+        });
+        navLinks.forEach((link) => {
+          link.classList.remove("active");
+          if (link.getAttribute("href") === `#${current}`) {
+            link.classList.add("active");
+          }
+        });
+      });
+      // Contact form submission
+      document
+        .getElementById("contactForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          const name = document.getElementById("name").value;
+          const email = document.getElementById("email").value;
+          const address = document.getElementById("address").value;
+          const service = document.getElementById("service").value;
+          const message = document.getElementById("message").value;
+          if (!name || !email || !address || !service || !message) {
+            const errorDiv = document.createElement("div");
+            errorDiv.className =
+              "bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4";
+            errorDiv.innerHTML = "Mohon lengkapi semua field yang diperlukan.";
+            const form = document.getElementById("contactForm");
+            form.insertBefore(errorDiv, form.firstChild);
+            setTimeout(() => {
+              errorDiv.remove();
+            }, 3000);
+            return;
+          }
+          // Format message for WhatsApp
+          const whatsappMessage = `Halo, saya ${name}%0A%0AEmail: ${email}%0AAlamat: ${address}%0ALayanan: ${service}%0A%0APesan: ${message}`;
+          // Open WhatsApp with the message
+          window.open(
+            `https://wa.me/6282359082093?text=${whatsappMessage}`,
+            "_blank"
+          );
+        });
+    </script>
+  </body>
+</html>
